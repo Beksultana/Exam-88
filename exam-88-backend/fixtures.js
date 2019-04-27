@@ -17,8 +17,8 @@ const run = async () => {
     }
 
     const user = await  User.create(
-        {username: "sultan", password: "123", token: 1},
-        {username: "Romeo", password: "123", token: 2},
+        {username: "sultan", password: "123", token: 1, displayName: "Aid", phone: '0501223355'},
+        {username: "Romeo", password: "123", token: 2, displayName: "Jul", phone: "0501020022"},
     );
 
     const categories = await Category.create(

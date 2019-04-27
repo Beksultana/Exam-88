@@ -9,6 +9,8 @@ class Register extends Component {
     state = {
         username: '',
         password: '',
+        displayName: '',
+        phone: ''
     };
 
     inputChangeHandler = event => {
@@ -46,6 +48,24 @@ class Register extends Component {
                         onChange={this.inputChangeHandler}
                         placeholder="Enter your desired password"
                         autocomplete="new-password"
+                    />
+
+                    <FormElement
+                        propertyName="displayName"
+                        title="Display Name"
+                        type="text"
+                        value={this.state.displayName}
+                        onChange={this.inputChangeHandler}
+                        placeholder="Enter your desired display name"
+                    />
+
+                    <FormElement
+                        propertyName="phone"
+                        title="Phone"
+                        type="number"
+                        value={this.state.phone}
+                        onChange={this.inputChangeHandler}
+                        placeholder="Enter your desired phone"
                     />
 
                     <FormGroup row>
