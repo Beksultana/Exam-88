@@ -5,6 +5,8 @@ import {push} from 'connected-react-router';
 export const fetchProductsSuccess = products => ({type: FETCH_PRODUCTS_SUCCESS, products});
 export const createPostSuccess = () => ({type: FETCH_PRODUCT_ONE_SUCCESS});
 
+export const fetchProductsOne = product => ({type: FETCH_PRODUCT_ONE_SUCCESS, product});
+
 export const fetchProducts = () => {
     return dispatch => {
         return axios.get('/products').then(
@@ -20,6 +22,16 @@ export const createProducts = postData => {
             response => {
                 dispatch(createPostSuccess());
                 dispatch(push('/'))
+            }
+        )
+    };
+};
+
+export const fetchProductOne = (id) => {
+    return dispatch => {
+        return axios.get('/product/' + id).then(
+            response => {
+                dispatch(fetchProductsOne(response.data))
             }
         )
     };

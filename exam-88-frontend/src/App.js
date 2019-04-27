@@ -10,6 +10,7 @@ import {connect} from "react-redux";
 import {NotificationContainer} from "react-notifications";
 import Category from "./containers/Category/Category";
 import NewProduct from "./containers/NewProduct/NewProduct";
+import Product from "./containers/Product/Product";
 
 function App(props) {
   return (
@@ -26,6 +27,7 @@ function App(props) {
                 <Route path="/register" exact component={Register}/>
                 <Route path="/login" exact component={Login}/>
                 <Route path="/new/product" exact component={NewProduct}/>
+                <Route path="/product/:id" exact component={Product}/>
             </Switch>
         </Container>
     </Fragment>

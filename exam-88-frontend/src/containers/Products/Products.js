@@ -12,11 +12,14 @@ class Products extends Component {
         this.props.fetchCategories();
     }
 
+    onClickHandler = (id) => {
+        this.props.history.push('/product/' + id)
+    };
 
     render() {
         const products = this.props.products.map(product => {
             return (
-                <div className="ProductItem" key={product._id}>
+                <div onClick={() => this.onClickHandler(product._id)} className="ProductItem" key={product._id}>
                     <div className="imageBlock">
                         {product.image && (
                             <img

@@ -10,4 +10,9 @@
     box-shadow: 2px 2px 5px #ccc;
     text-align: center;
     margin: 10px 0;
+    cursor: pointer;
+}
+
+.ProductItem:hover {
+    border: 1px solid #ff4e61
 }
