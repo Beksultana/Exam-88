@@ -8,6 +8,8 @@ import Login from "./containers/Login/Login";
 import {logoutUser} from "./store/actions/userAction";
 import {connect} from "react-redux";
 import {NotificationContainer} from "react-notifications";
+import Category from "./containers/Category/Category";
+import NewProduct from "./containers/NewProduct/NewProduct";
 
 function App(props) {
   return (
@@ -18,10 +20,12 @@ function App(props) {
                    logout={props.logoutUser}/>
       </header>
         <Container>
+            <Category product={props.product}/>
             <Switch>
-                <Route path="/" exact component={Products}/>
+                <Route path={"/"} exact component={Products}/>
                 <Route path="/register" exact component={Register}/>
                 <Route path="/login" exact component={Login}/>
+                <Route path="/new/product" exact component={NewProduct}/>
             </Switch>
         </Container>
     </Fragment>
@@ -29,7 +33,8 @@ function App(props) {
 }
 
 const mapStateToProps = state => ({
-    user: state.users.user
+    user: state.users.user,
+    product: state.products.products
 });
 const mapDispatchToProps = dispatch => ({
     logoutUser: () => dispatch(logoutUser())

@@ -12,10 +12,8 @@ class Products extends Component {
         this.props.fetchCategories();
     }
 
-    render() {
-        console.log(this.props.products);
-        console.log(this.props.categories);
 
+    render() {
         const products = this.props.products.map(product => {
             return (
                 <div className="ProductItem" key={product._id}>

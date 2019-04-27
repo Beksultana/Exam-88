@@ -12,7 +12,7 @@ const Toolbar = ({user, logout}) => {
                 {user ?
                     <Fragment>
                         <NavItem>
-                            <NavLink tag={RouterNavLink} to="/new/post">Add new post</NavLink>
+                            <NavLink tag={RouterNavLink} to="/new/product">Add new product</NavLink>
                         </NavItem>
                         <UserMenu user={user} logout={logout}/>
                     </Fragment> : <AnonymousMenu/>}

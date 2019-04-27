@@ -1,8 +1,9 @@
 import axios from '../../axios-shop';
 import {FETCH_PRODUCT_ONE_SUCCESS, FETCH_PRODUCTS_SUCCESS} from "./typeActions";
+import {push} from 'connected-react-router';
 
 export const fetchProductsSuccess = products => ({type: FETCH_PRODUCTS_SUCCESS, products});
-export const fetchProductOneSuccess = product => ({type: FETCH_PRODUCT_ONE_SUCCESS, product});
+export const createPostSuccess = () => ({type: FETCH_PRODUCT_ONE_SUCCESS});
 
 export const fetchProducts = () => {
     return dispatch => {
@@ -11,12 +12,14 @@ export const fetchProducts = () => {
         );
     };
 };
-
-export const fetchProductOne = categoryId => {
-    return dispatch => {
-        return axios.get('/products?category=' + categoryId).then(
+export const createProducts = postData => {
+    return (dispatch, getState) => {
+        const token = getState().users.user.token;
+        const config = {headers: {"Authorization": token}};
+        return axios.post('/products', postData, config).then(
             response => {
-                dispatch(fetchProductOneSuccess(response.data))
+                dispatch(createPostSuccess());
+                dispatch(push('/'))
             }
         )
     };
