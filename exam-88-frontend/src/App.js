@@ -1,26 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {Fragment} from 'react';
+import Toolbar from "./components/UI/Toolbar/Toolbar";
+import {Container} from "reactstrap";
+import {Route, Switch, withRouter} from "react-router";
+import Products from "./containers/Products/Products";
+import Register from "./containers/Register/Register";
+import Login from "./containers/Login/Login";
+import {logoutUser} from "./store/actions/userAction";
+import {connect} from "react-redux";
+import {NotificationContainer} from "react-notifications";
 
-function App() {
+function App(props) {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <Fragment>
+        <NotificationContainer/>
+      <header>
+          <Toolbar user={props.user}
+                   logout={props.logoutUser}/>
       </header>
-    </div>
+        <Container>
+            <Switch>
+                <Route path="/" exact component={Products}/>
+                <Route path="/register" exact component={Register}/>
+                <Route path="/login" exact component={Login}/>
+            </Switch>
+        </Container>
+    </Fragment>
   );
 }
 
-export default App;
+const mapStateToProps = state => ({
+    user: state.users.user
+});
+const mapDispatchToProps = dispatch => ({
+    logoutUser: () => dispatch(logoutUser())
+});
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

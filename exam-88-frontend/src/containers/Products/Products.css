@@ -1,0 +1,13 @@
+.ProductInfoBlock {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.ProductItem {
+    border: 1px solid #ccc;
+    padding: 7px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px #ccc;
+    text-align: center;
+    margin: 10px 0;
+}
