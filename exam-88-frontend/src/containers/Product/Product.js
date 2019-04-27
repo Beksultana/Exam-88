@@ -5,7 +5,7 @@ import {connect} from "react-redux";
 class Product extends Component {
 
     componentDidMount(){
-        this.props.fetchProduct()
+        this.props.fetchProduct(this.props.match.params.id)
     }
 
     render() {
@@ -25,7 +25,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    fetchProduct: () => dispatch(fetchProductOne()),
+    fetchProduct: (id) => dispatch(fetchProductOne(id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Product);

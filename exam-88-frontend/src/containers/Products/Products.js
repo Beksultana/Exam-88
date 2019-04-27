@@ -35,7 +35,7 @@ class Products extends Component {
                     </div>
                 </div>
             )
-        })
+        });
         return (
             <Fragment>
                 <div className="ProductInfoBlock">
